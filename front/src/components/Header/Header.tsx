@@ -11,10 +11,10 @@ type CategoryLink = {
 };
 
 const links: CategoryLink[] = [
-  { href: "/laptops", title: "Laptops" },
-  { href: "/tablets", title: "Tablets" },
-  { href: "/smartphones", title: "Smartphones" },
-  { href: "/desktops", title: "Desktops" },
+  { href: "/shops", title: "Shops" },
+  { href: "/payment/1", title: "Payment" },
+  // { href: "/smartphones", title: "Smartphones" },
+  // { href: "/desktops", title: "Desktops" },
 ];
 
 const Header: FC<Props> = ({ onSearchChange }) => {

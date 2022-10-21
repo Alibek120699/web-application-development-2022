@@ -1,10 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import { Clusterer, Map as YandexMap, Placemark } from "react-yandex-maps";
 
-import { useApplications } from "../../store/apps/hooks";
+import { useShopList } from "../../store/shops/hooks";
+
+const CENTER = [43.236079, 76.881579];
 
 const Map = (): JSX.Element => {
-  const { applications } = useApplications();
+  const { shops } = useShopList();
 
   return (
     <Box w="full" h="100%">
@@ -12,15 +14,15 @@ const Map = (): JSX.Element => {
         width="100%"
         height="100%"
         state={{
-          center: [43.236079, 76.881579],
+          center: CENTER,
           zoom: 17,
         }}
       >
         <Clusterer>
-          {applications.map((application) => (
+          {shops.map((shop) => (
             <Placemark
-              key={application.id}
-              geometry={[application.coords.lat, application.coords.long]}
+              key={shop.id}
+              geometry={[shop.coords.lat, shop.coords.long]}
               onClick={() => console.log("clicked")}
               options={{
                 iconLayout: "default#image",

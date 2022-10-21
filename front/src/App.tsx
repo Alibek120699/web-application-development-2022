@@ -7,11 +7,11 @@ const ShopsPage = lazy(() => import("./pages/ShopsPage"));
 const PaymentPage = lazy(() => import("./pages/PaymentPage"));
 
 function App() {
-  useEffect(() => {
-    fetch("/api/posts", {
-      method: "GET",
-    }).then((res) => console.log(res));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/posts", {
+  //     method: "GET",
+  //   }).then((res) => console.log(res));
+  // }, []);
 
   return (
     <Suspense fallback={<p>loading...</p>}>
