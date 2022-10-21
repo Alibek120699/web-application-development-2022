@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const Mainpage = lazy(() => import("./pages/MainPage"));
+const ShopsPage = lazy(() => import("./pages/ShopsPage"));
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="" element={<Mainpage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/shops" element={<ShopsPage />} />
         </Routes>
       </Router>
     </Suspense>
