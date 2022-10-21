@@ -26,8 +26,8 @@ const laptops: Product[] = [
 
 const smartphones: Product[] = [
   {
-    name: "Lenovo Legion 5",
-    description: "Ryzen5 4600H",
+    name: "Samsung Galaxy A53",
+    description: "Android Smartphone",
     price: 500_000,
     oldPrice: 600_000,
     imageUrl:

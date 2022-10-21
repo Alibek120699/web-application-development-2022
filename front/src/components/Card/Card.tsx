@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 type Props = {
   product: Product;
+  withButton?: boolean;
 };
 
 const priceFormatter = new Intl.NumberFormat("ru-RU", {
@@ -14,7 +15,7 @@ const priceFormatter = new Intl.NumberFormat("ru-RU", {
   maximumSignificantDigits: 1,
 });
 
-const Card: FC<Props> = ({ product }) => {
+const Card: FC<Props> = ({ product, withButton = true }) => {
   const onPurchaseClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     console.log("purchase");
@@ -24,6 +25,7 @@ const Card: FC<Props> = ({ product }) => {
     <Flex
       direction="column"
       bg="orange.100"
+      maxW="280px"
       p={4}
       borderRadius={4}
       cursor="pointer"
@@ -39,14 +41,17 @@ const Card: FC<Props> = ({ product }) => {
           <Text noOfLines={1}>{product.description}</Text>
           <Text noOfLines={1}>{priceFormatter.format(product.price)}</Text>
         </Stack>
-        <Button
-          colorScheme="blue"
-          w="full"
-          zIndex={2}
-          onClick={onPurchaseClick}
-        >
-          Purchase
-        </Button>
+        {withButton && (
+          <Button
+            colorScheme="blue"
+            w="full"
+            zIndex={2}
+            onClick={onPurchaseClick}
+            mt={4}
+          >
+            Purchase
+          </Button>
+        )}
       </Link>
     </Flex>
   );

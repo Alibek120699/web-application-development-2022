@@ -1,7 +1,9 @@
 import { Flex, Input } from "@chakra-ui/react";
 import { ChangeEvent, FC } from "react";
 
-import { getSecureURL } from "../../security/helpers";
+type Props = {
+  onSearchChange: (value: string) => void;
+};
 
 type CategoryLink = {
   href: string;
@@ -15,9 +17,9 @@ const links: CategoryLink[] = [
   { href: "/desktops", title: "Desktops" },
 ];
 
-const Header: FC = () => {
+const Header: FC<Props> = ({ onSearchChange }) => {
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    eval(e.target.value);
+    onSearchChange(e.target.value);
   };
 
   // const createLogo = () => {

@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense } from "react";
+import { FC, lazy, Suspense, useMemo, useState } from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 
 import { products } from "../../store/data";
@@ -7,15 +7,23 @@ const Header = lazy(() => import("../../components/Header"));
 const Card = lazy(() => import("../../components/Card"));
 
 const Mainpage: FC = () => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) =>
+      p.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [products, searchValue]);
+
   return (
     <>
       <Suspense fallback={null}>
-        <Header />
+        <Header onSearchChange={setSearchValue} />
       </Suspense>
       <Box p={10}>
         <Suspense fallback={null}>
           <SimpleGrid minChildWidth="200px" gap={4}>
-            {products.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <Card key={index} product={product} />
             ))}
           </SimpleGrid>
